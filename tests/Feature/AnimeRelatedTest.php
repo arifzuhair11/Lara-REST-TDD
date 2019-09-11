@@ -11,6 +11,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class AnimeRelatedTest extends TestCase
 {
     use RefreshDatabase;
+
+
     /**
     @test
      */
