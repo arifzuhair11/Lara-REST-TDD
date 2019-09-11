@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', 'AuthController@login')->name('api.login');
+
+Route::group(['middleware' => 'auth:api'], function (){
 });
+
+Route::post('/anime', 'API\AnimeController@store');
+Route::get('/anime/{anime}', 'API\AnimeController@show');
+Route::put('/anime/{anime}', 'API\AnimeController@update');
