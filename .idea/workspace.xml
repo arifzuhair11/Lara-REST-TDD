@@ -8,16 +8,10 @@
       <change beforePath="$PROJECT_DIR$/../LaraREST/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LaraREST/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/config/auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LaraREST/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LaraTDD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaraTDD.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/AnimeRelatedTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AnimeRelatedTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/AuthenticationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AuthenticationTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +181,7 @@
       <workItem from="1568193568894" duration="960000" />
       <workItem from="1568201429715" duration="89000" />
       <workItem from="1568201596286" duration="382000" />
-      <workItem from="1568252601687" duration="15653000" />
+      <workItem from="1568252601687" duration="20051000" />
     </task>
     <servers />
   </component>

@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('auth:api');
+//    }
+
     public function customRegister(Request $req){
         $req->validate([
             'name' => 'required|string|max:255',
@@ -81,6 +86,7 @@ class AuthController extends Controller
 
         // Get the data from the response
         $data = json_decode($response->getContent());
+//        auth()->user()->token = $data->access_token;
         return response()->json([
             'user' => $user,
             'access_token' => $data->access_token,
@@ -122,8 +128,8 @@ class AuthController extends Controller
             $response = $http->post('http://localhost:8000/oauth/token', [
                 'form_params' => [
                     'grant_type' => 'password',
-                    'client_id' =>'2', #config('services.passport.client_id'),
-                    'client_secret' =>'5PUp7tmht6n7GR9em4A7ohDgC105gEt1jJSwvd5Q',#config('services.passport.client_secret'),
+                    'client_id' =>config('services.passport.client_id'),
+                    'client_secret' => config('services.passport.client_secret'),
                     'username' => $request->email,
                     'password' => $request->password,
                 ]
