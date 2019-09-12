@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e9b5083-6016-43a5-8892-1b5d08af1ff3" name="Default Changelist" comment="" />
+    <list default="true" id="8e9b5083-6016-43a5-8892-1b5d08af1ff3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../LaraREST/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LaraREST/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LaraREST/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LaraREST/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LaraREST/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LaraREST/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LaraTDD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaraTDD.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/AnimeRelatedTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AnimeRelatedTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/AuthenticationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AuthenticationTest.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +33,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -122,11 +140,13 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1QfmBo0N4tBbxNIi56jE8IlXOs0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LaraREST" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -163,7 +183,11 @@
       <updated>1568169892443</updated>
       <workItem from="1568169898571" duration="12107000" />
       <workItem from="1568188484943" duration="413000" />
-      <workItem from="1568189078538" duration="4023000" />
+      <workItem from="1568189078538" duration="4106000" />
+      <workItem from="1568193568894" duration="960000" />
+      <workItem from="1568201429715" duration="89000" />
+      <workItem from="1568201596286" duration="382000" />
+      <workItem from="1568252601687" duration="15653000" />
     </task>
     <servers />
   </component>

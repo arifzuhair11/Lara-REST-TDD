@@ -2,13 +2,28 @@
 
 namespace Tests\Feature;
 
+use App\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AuthenticationTest extends TestCase
 {
-//    use RefreshDatabase;
+    use DatabaseTransactions;
+    /**
+    @test
+     */
+    public function register_new_user(){
+        $response = $this->withHeaders([
+            'Accept' => 'application/json',
+        ])->json('POST','/api/register', [
+            'name' => 'Midoriya Deku',
+            'email' => 'midoriya@ua.com',
+            'password' => '123456789',
+        ]);
+        $response->assertJsonStructure(['user'=>['id','name','email', 'created_at']])
+                 ->assertStatus(200);
+    }
     /**
     @test
      */
@@ -29,11 +44,11 @@ class AuthenticationTest extends TestCase
         $this->withoutExceptionHandling();
         $response = $this->withHeaders([
             'Accept' => 'application/json',
-        ])->json('POST','/api/login', [
+        ])->json('POST','/api/myLogin', [
             'username' => 'tanjiro@laravel.com',
             'password' => 'secret'
         ]);
-        $response->assertStatus(401);
+        $response->assertStatus(422);
     }
     /**
     @test
@@ -43,9 +58,9 @@ class AuthenticationTest extends TestCase
 
         $response = $this->withHeaders([
             'Accept' => 'application/json',
-        ])->json('POST','/api/login', [
+        ])->json('POST','/api/myLogin', [
             'email' => 'arifzuhair@laravel.com',
-            'password' =>'secret'
+            'password' =>'123456789'
         ]);
         $response->assertStatus(200);
     }
