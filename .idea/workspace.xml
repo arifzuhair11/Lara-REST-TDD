@@ -2,16 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e9b5083-6016-43a5-8892-1b5d08af1ff3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../LaraREST/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LaraREST/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LaraREST/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LaraREST/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LaraREST/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LaraREST/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/../LaraREST/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LaraTDD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaraTDD.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/AnimeRelatedTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AnimeRelatedTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/AuthenticationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AuthenticationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,6 +140,7 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QfmBo0N4tBbxNIi56jE8IlXOs0" />
@@ -181,7 +191,9 @@
       <workItem from="1568193568894" duration="960000" />
       <workItem from="1568201429715" duration="89000" />
       <workItem from="1568201596286" duration="382000" />
-      <workItem from="1568252601687" duration="20051000" />
+      <workItem from="1568252601687" duration="20798000" />
+      <workItem from="1568340684517" duration="6482000" />
+      <workItem from="1568363045031" duration="5992000" />
     </task>
     <servers />
   </component>

@@ -24,19 +24,7 @@ class AuthenticationTest extends TestCase
         $response->assertJsonStructure(['user'=>['id','name','email', 'created_at']])
                  ->assertStatus(200);
     }
-    /**
-    @test
-     */
-    public function not_allowed_to_create(){
-        $response = $this->withHeaders([
-            'Accept' => 'application/json',
-        ])->json('POST','/api/anime', [
-            'title' => 'My Hero Academia',
-            'genre' => 'shounen',
-            'runtime' => '30min'
-        ]);
-        $response->assertStatus(401);
-    }
+
     /**
     @test
      */

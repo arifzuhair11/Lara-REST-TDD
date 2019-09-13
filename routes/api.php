@@ -13,13 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
+// Using
 Route::post('/register', 'API\AuthController@customRegister');
-
-
-Route::post('/devTo', 'API\AuthController@devToLogin');
 Route::post('/myLogin', 'API\AuthController@myLogin');
+
+//Testing methods
+Route::post('/hamzaLogin', 'API\AuthController@hamzaliLogin');
+Route::post('/devTo', 'API\AuthController@devToLogin');
 Route::post('/andreLogin', 'API\AuthController@andreLogin');
 
+// API Routes
 Route::group(['middleware' => 'auth:api'], function (){
     Route::get('/anime', 'API\AnimeController@index');
     Route::post('/anime', 'API\AnimeController@store');

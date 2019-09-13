@@ -135,7 +135,7 @@ class AnimeRelatedTest extends TestCase
             'runtime' => '45min'
         ]);
         $response->assertStatus(401);
-    }  
+    }
 
     /**
     @test
