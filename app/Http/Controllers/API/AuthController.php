@@ -5,7 +5,10 @@ namespace App\Http\Controllers\API;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use function foo\func;
 
 class AuthController extends Controller
 {
@@ -27,10 +30,10 @@ class AuthController extends Controller
         ]);
     }
 
-    public function myLogin()
+    public function myLogin(Request $request)
     {
         // Check if a user with the specified email exists
-        $user = User::whereEmail(request('email'))->first();
+        $user = User::where('email',$request->email)->first();
         if (!$user) {
             return response()->json([
                 'message' => 'Wrong email or password',
@@ -39,15 +42,15 @@ class AuthController extends Controller
         }
         // If a user with the email was found - check if the specified password
         // belongs to this user
-        if (!Hash::check(request('password'), $user->password)) {
+        if (!Hash::check($request->password, $user->password)) {
             return response()->json([
                 'message' => 'Wrong email or password',
                 'status' => 422
             ], 422);
         }
 
-        $credentials = request()->only('email', 'password');
-        if(auth()->attempt($credentials)){
+        $credentials = $request->only('email', 'password');
+        if(Auth::attempt($credentials)){
             $data = [
                 'grant_type' => 'password',
                 'client_id' => config('services.passport.client_id'),
@@ -69,12 +72,11 @@ class AuthController extends Controller
 
             // Get the data from the response
             $data = json_decode($response->getContent());
-            auth()->user()->withAccessToken($data->access_token);
+            Auth::user()->withAccessToken($data->access_token);
             return response()->json([
-                'message' => 'Returned using Auth::user',
-                'user' => auth()->user(),
-                'data_returned' => $data->access_token,
-                'access_token' => auth()->user()->token(),
+                'redirect' => route('home'),
+                'user' => Auth::user(),
+                'access_token' => Auth::user()->token(),
                 'status' =>$response->getStatusCode(),
             ]);
         }
@@ -91,7 +93,13 @@ class AuthController extends Controller
 //                'status' => 500
 //            ], 500);
 //        }
+    }
 
+    public function myLogout(){
+        auth()->user()->tokens->each(function ($token, $key){
+            $token->delete();
+        });
+        return response()->json(['message' => 'Successfuly logged out!'], 200);
     }
 
     # dev.to

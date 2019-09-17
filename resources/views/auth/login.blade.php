@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" id="loginForm">
                         @csrf
 
                         <div class="form-group row">
@@ -53,7 +53,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="button" id="loginBTN" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
 
@@ -70,4 +70,22 @@
         </div>
     </div>
 </div>
+<script src="{{asset('js/app.js')}}"></script>
+<script>
+    $(document).ready(function () {
+      $('#loginBTN').on('click', function () {
+          var formData = $('#loginForm').serialize();
+          axios.post('/api/myLogin', formData).then(response => {
+              window.localStorage.setItem('token', response['data']['access_token']);
+              window.localStorage.setItem('user', JSON.stringify(response['data']['user']));
+              // axios.default.headers.common['Authorization'] = 'Bearer '+response['data']['access_token'];
+
+              window.location = response['data']['redirect'];
+          }).catch(error => {
+              console.log(error)
+              alert('Invalid credentials')
+          })
+      });
+    });
+</script>
 @endsection

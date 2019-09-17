@@ -18,9 +18,9 @@ Route::post('/register', 'API\AuthController@customRegister');
 Route::post('/myLogin', 'API\AuthController@myLogin');
 
 //Testing methods
-Route::post('/hamzaLogin', 'API\AuthController@hamzaliLogin');
-Route::post('/devTo', 'API\AuthController@devToLogin');
-Route::post('/andreLogin', 'API\AuthController@andreLogin');
+//Route::post('/hamzaLogin', 'API\AuthController@hamzaliLogin');
+//Route::post('/devTo', 'API\AuthController@devToLogin');
+//Route::post('/andreLogin', 'API\AuthController@andreLogin');
 
 // API Routes
 Route::group(['middleware' => 'auth:api'], function (){
@@ -29,4 +29,6 @@ Route::group(['middleware' => 'auth:api'], function (){
     Route::get('/anime/{anime}', 'API\AnimeController@show');
     Route::put('/anime/{anime}', 'API\AnimeController@update');
     Route::delete('/anime/{anime}', 'API\AnimeController@destroy');
+
+    Route::post('/myLogout', 'API\AuthController@myLogout')->name('myLogout');
 });

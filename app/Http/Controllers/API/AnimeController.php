@@ -25,9 +25,12 @@ class AnimeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $anime = Anime::create($request->all());
-        return response()->json([],201);
+    {   $anime = new Anime();
+        $anime->title = $request->title;
+        $anime->genre = $request->genre;
+        $anime->runtime = $request->runtime;
+        $anime->save();
+        return response()->json(['message' => 'Anime added successfully!'],200);
     }
 
     /**
@@ -38,7 +41,7 @@ class AnimeController extends Controller
      */
     public function show(Anime $anime)
     {
-        return response()->json(['data' => $anime], 302);
+        return response()->json(['anime' => $anime], 200);
     }
 
     /**
@@ -67,6 +70,6 @@ class AnimeController extends Controller
     public function destroy(Anime $anime)
     {
         $anime->delete();
-        return response()->json([], 200);
+        return response()->json(['message'=> 'Anime deleted successfully'], 200);
     }
 }
