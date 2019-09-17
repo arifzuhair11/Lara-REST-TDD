@@ -17,7 +17,7 @@ class CreateAnimesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('genre')->nullable();
-            $table->string('runtime')->nullable();
+            $table->string('episode')->nullable();
             $table->timestamps();
         });
     }

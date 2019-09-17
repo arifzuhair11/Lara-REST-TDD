@@ -76,11 +76,12 @@
       $('#loginBTN').on('click', function () {
           var formData = $('#loginForm').serialize();
           axios.post('/api/myLogin', formData).then(response => {
+              console.log(response);
               window.localStorage.setItem('token', response['data']['access_token']);
               window.localStorage.setItem('user', JSON.stringify(response['data']['user']));
-              // axios.default.headers.common['Authorization'] = 'Bearer '+response['data']['access_token'];
+              axios.defaults.headers.common.Authorization = 'Bearer '+response['data']['access_token'];
 
-              window.location = response['data']['redirect'];
+              window.location = 'http://localhost:8000/home';
           }).catch(error => {
               console.log(error)
               alert('Invalid credentials')

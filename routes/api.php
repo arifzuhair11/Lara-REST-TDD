@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 // Using
-Route::post('/register', 'API\AuthController@customRegister');
+Route::post('/myRegister', 'API\AuthController@customRegister')->name('api.register');
 Route::post('/myLogin', 'API\AuthController@myLogin');
 
 //Testing methods

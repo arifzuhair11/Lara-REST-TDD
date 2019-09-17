@@ -15,37 +15,37 @@ class AnimeSeeder extends Seeder
         Anime::create([
            'title' => 'My Hero Academia',
            'genre'=>'shounen',
-           'runtime' => '30min'
+           'episode' => '50'
         ]);
 
         Anime::create([
             'title' => 'Fairy Tail',
             'genre'=>'magic',
-            'runtime' => '30min'
+            'episode' => '50'
         ]);
 
         Anime::create([
             'title' => 'Black Clover',
             'genre'=>'wizards',
-            'runtime' => '30min'
+            'episode' => '50'
         ]);
 
         Anime::create([
             'title' => 'Fire Force',
             'genre'=>'shounen',
-            'runtime' => '30min'
+            'episode' => '50'
         ]);
 
         Anime::create([
             'title' => 'Fullmetal Alchemist',
             'genre'=>'alchemy',
-            'runtime' => '30min'
+            'episode' => '50'
         ]);
 
         Anime::create([
             'title' => 'Yu Yu Hakusho',
             'genre'=>'action',
-            'runtime' => '30min'
+            'episode' => '50'
         ]);
     }
 }

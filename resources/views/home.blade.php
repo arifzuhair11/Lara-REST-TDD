@@ -12,7 +12,7 @@
                     <form method="POST" id="logoutForm" style="display: none">
                         @csrf
                     </form>
-                    <a href="{{route('login')}}" class="btn btn-outline-danger float-right" onclick="logout()">Logout</a>
+                    <button class="btn btn-outline-danger float-right" onclick="logout()">Logout</button>
                 </div>
             </div>
             <div class="card  mt-3">
@@ -31,6 +31,7 @@
                     <table class="table table-bordered">
                         <th>Title</th>
                         <th>Genre</th>
+                        <th>Num. of Episodes</th>
                         <th colspan="2">Action</th>
                         <tbody id="animeBody">
 
@@ -63,12 +64,12 @@
                         <input type="text" class="form-control" name="genre" id="genreValue" value="">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Runtime</label>
-                        <input type="text" class="form-control" name="runtime" id="runtimeValue" value="">
+                        <label for="exampleInputEmail1">Num. of Episode</label>
+                        <input type="text" class="form-control" name="episodes" id="episodeValue" value="">
                     </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-outline-success" onclick="addProcess()"></button>
+                <button class="btn btn-outline-success" ></button>
             </div>
             </form>
         </div>
@@ -77,32 +78,19 @@
 <script src="{{asset('js/app.js')}}"></script>
 <script>
     $(document).ready(function () {
-        setUser();
-        animeIndex();
-        $('#baseModal').on('hide.bs.modal', function () {
-            $(this).find('input').val('');
-            location.reload();
-        });
-    });
-    $('#logoutBTN').on('click', function () {
-       logoutForm = $('#logoutForm').serialize();
-        header = setHeaders();
-        message = 'You will be logging out. Continue?';
-        if(confirm(message)){
-            axios.post('/api/myLogout',header, logoutForm)
-                .then(response => {
-                    console.log(response);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
+            setUser();
+            animeIndex();
+            $('#baseModal').on('hide.bs.modal', function () {
+                $(this).find('input').val('');
+                location.reload();
+            });
     });
     function parseAdd(element){
         title = element.getAttribute('data-title');
         $('#baseModal').find('.modal-title').text(title);
         $('#baseModal').find('.btn').text('Add');
         $('#baseModal').find('.btn').attr('id', 'addBTN');
+        $('#baseModal').find('.btn').attr('onclick', 'addProcess()');
     }
     function setHeaders(){
         authToken = localStorage.getItem('token');
@@ -115,29 +103,29 @@
     }
     function logout(){
      event.preventDefault();
+     logoutForm = $('#logoutForm').serialize();
      headers = setHeaders();
-        axios.post('/api/myLogout',headers)
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error);
-            })
+     message = "You will be logged out. Continue?";
+     if(confirm(message)){
+         axios.post('/api/myLogout',logoutForm, headers)
+             .then(response => {
+                 window.location.href = "/login";
+             })
+             .catch(error => {
+                 console.log(error);
+             })
+     }
+
     }
     function addProcess(){
         event.preventDefault();
         header = setHeaders();
-        form = $('#modalForm').serialize();
+        data = $('#modalForm').serialize();
         message = "The information will be saved. Continue?";
         if(confirm(message)){
-            axios.post('/api/anime', JSON.stringify(form),{
-                'headers': {
-                    'Content-Type' : 'application/json',
-                    'Authorization' : 'Bearer '+localStorage.getItem('token')
-                }
-            })
+            axios.post('/api/anime', data, header)
                 .then(response=>{
-                    console.log(response);
+                    alert(response['data']['message']);
                 })
                 .catch(error => {
                     console.log(error);
@@ -153,6 +141,7 @@
                 html = "<tr>" +
                     "   <td>"+data['title']+"</td>   " +
                     "   <td>"+data['genre']+"</td>   " +
+                    "   <td>"+data['episode']+"</td>   " +
                     "   <td> <button class='btn btn-outline-dark' data-id='"+data['id']+"' id='edit' onclick='parseEdit(this)' data-toggle='modal' data-title='Edit Anime' data-target='#baseModal'>Edit</button> </td>   " +
                     "   <td> <button class='btn btn-outline-danger' data-id='"+data['id']+"' id='delete' onclick='deleteAnime(this)'>Delete</button> </td>   " +
                     "</tr>";
@@ -182,14 +171,31 @@
             .then(response => {
                 $('#baseModal').find('.modal-title').text(title);
                 $('#baseModal').find('.btn').text('Update');
+                $('#baseModal').find('.btn').attr('onclick', 'editProcess()');
                 $('#baseModal').find('#titleValue').val(response['data']['anime']['title']);
                 $('#baseModal').find('#genreValue').val(response['data']['anime']['genre']);
-                $('#baseModal').find('#runtimeValue').val(response['data']['anime']['runtime']);
+                $('#baseModal').find('#episodeValue').val(response['data']['anime']['runtime']);
                 $('#baseModal').find('#animeID').val(response['data']['anime']['id']);
             })
             .catch(error => {
                 console.log(error)
             })
+    }
+    function editProcess() {
+        event.preventDefault();
+        header = setHeaders();
+        id = $('#animeID').val();
+        data = $('#modalForm').serialize();
+        message = "Anime information will be updated. Continue?";
+        if(confirm(message)){
+            axios.put('/api/anime/'+id, data, header)
+                .then(response => {
+                    alert(response['data']['message']);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
     }
 
 </script>
