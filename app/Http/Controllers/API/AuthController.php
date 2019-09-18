@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\User;
+use GuzzleHttp\Client;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +14,9 @@ use function foo\func;
 
 class AuthController extends Controller
 {
+    use AuthenticatesUsers;
 
+    protected $redirectTo = '/home';
     public function customRegister(Request $req){
         $req->validate([
             'name' => 'required|string|max:255',
@@ -48,58 +52,72 @@ class AuthController extends Controller
                 'status' => 422
             ], 422);
         }
-
         $credentials = $request->only('email', 'password');
         if(Auth::attempt($credentials)){
-            $data = [
-                'grant_type' => 'password',
-                'client_id' => config('services.passport.client_id'),
-                'client_secret' => config('services.passport.client_secret'),
-                'username' => request('email'),
-                'password' => request('password'),
-            ];
-
-            $request = Request::create(config('services.passport.login_endpoint'), 'POST', $data);
-
-            $response = app()->handle($request);
-            // Check if the request was successful
-            if ($response->getStatusCode() != 200) {
-                return response()->json([
-                    'message' => 'Wrong email or password',
-                    'status' => 422
-                ], 422);
-            }
-
-            // Get the data from the response
-            $data = json_decode($response->getContent());
-            Auth::user()->withAccessToken($data->access_token);
-            return response()->json([
-                'redirect' => route('home'),
-                'user' => Auth::user(),
-                'access_token' => Auth::user()->token(),
-                'status' =>$response->getStatusCode(),
-            ]);
+           return $this->sendLoginResponse($request);
         }
 
-//        **OPTIONAL Send an internal API request to get an access token
-//        $client = DB::table('oauth_clients')
-//            ->where('password_client', true)
-//            ->first();
+    }
 
-        // Make sure a Password Client exists in the DB
-//        if (!$client) {
-//            return response()->json([
-//                'message' => 'Laravel Passport is not setup properly.',
-//                'status' => 500
-//            ], 500);
-//        }
+    protected function sendLoginResponse(Request $request)
+    {
+        /*
+         {
+             **OPTIONAL Send an internal API request to get an access token
+            $client = DB::table('oauth_clients')
+                ->where('password_client', true)
+                ->first();
+
+                 Make sure a Password Client exists in the DB
+            if (!$client) {
+                return response()->json([
+                    'message' => 'Laravel Passport is not setup properly.',
+                    'status' => 500
+                ], 500);
+            }
+        }
+        */
+        $data = [
+            'grant_type' => 'password',
+            'client_id' => config('services.passport.client_id'),
+            'client_secret' => config('services.passport.client_secret'),
+            'username' => $request->email,
+            'password' => $request->password,
+        ];
+
+        return $this->passport($data);
+    }
+
+    protected function passport($data)
+    {
+        $request = Request::create(config('services.passport.login_endpoint'), 'POST', $data);
+        $response = app()->handle($request);
+        // Check if the request was successful
+        if ($response->getStatusCode() != 200) {
+            return response()->json([
+                'message' => 'Wrong email or password',
+                'status' => 422
+            ], 422);
+        }
+        // Get the data from the response
+        $data = json_decode($response->getContent());
+        Auth::user()->withAccessToken($data->access_token);
+        return response()->json([
+            'redirect' => route('home'),
+            'user' => \auth()->user(),
+            'access_token' => \auth()->user()->token(),
+            'status' =>$response->getStatusCode(),
+        ]);
     }
 
     public function myLogout(){
         auth()->user()->tokens->each(function ($token, $key){
             $token->delete();
         });
-        return response()->json(['message' => 'Successfuly logged out!'], 200);
+        return response()->json([
+            'message' => 'Successfuly logged out!',
+            'redirect' => route('login'),
+        ], 200);
     }
 
     # dev.to

@@ -81,11 +81,11 @@
               window.localStorage.setItem('user', JSON.stringify(response['data']['user']));
               axios.defaults.headers.common.Authorization = 'Bearer '+response['data']['access_token'];
 
-              window.location = 'http://localhost:8000/home';
+              window.location = response['data']['redirect'];
           }).catch(error => {
               console.log(error)
-              alert('Invalid credentials')
-          })
+              alert('Invalid credentials');
+          });
       });
     });
 </script>

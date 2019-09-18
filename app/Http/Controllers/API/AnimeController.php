@@ -26,11 +26,7 @@ class AnimeController extends Controller
      */
     public function store(Request $request)
     {
-        $anime = new Anime();
-        $anime->title = $request->title;
-        $anime->episode = $request->episodes;
-        $anime->genre = $request->genre;
-        $anime->save();
+        Anime::create($request->all());
         return response()->json(['message' => 'Anime added successfully!'],200);
     }
 
@@ -54,12 +50,13 @@ class AnimeController extends Controller
      */
     public function update(Anime $anime, Request $request)
     {
+        $oldTitle = $anime->title;
         $anime->title = $request->title;
         $anime->episode = $request->episodes;
         $anime->genre = $request->genre;
         $anime->save();
 
-        return response()->json(['message' => $anime->title.' updated successfully!'], 200);
+        return response()->json(['message' => $oldTitle.' updated successfully!'], 200);
     }
 
     /**

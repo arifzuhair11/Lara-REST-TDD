@@ -102,20 +102,19 @@
         $('#navbarDropdown').text(user.name);
     }
     function logout(){
-     event.preventDefault();
-     logoutForm = $('#logoutForm').serialize();
-     headers = setHeaders();
-     message = "You will be logged out. Continue?";
-     if(confirm(message)){
-         axios.post('/api/myLogout',logoutForm, headers)
-             .then(response => {
-                 window.location.href = "/login";
-             })
-             .catch(error => {
-                 console.log(error);
-             })
-     }
-
+         event.preventDefault();
+         logoutForm = $('#logoutForm').serialize();
+         headers = setHeaders();
+         message = "You will be logged out. Continue?";
+         if(confirm(message)){
+             axios.post('/api/myLogout',logoutForm, headers)
+                 .then(response => {
+                     window.location = response['data']['redirect'];
+                 })
+                 .catch(error => {
+                     console.log(error);
+                 })
+         }
     }
     function addProcess(){
         event.preventDefault();
