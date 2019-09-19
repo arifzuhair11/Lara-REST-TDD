@@ -59,11 +59,7 @@ class AnimeRelatedTest extends TestCase
         $response = $this->withHeaders([
             'Accept' => 'application/json',
             'Authorization'=> 'Bearer '.$loginData->access_token
-        ])->json('POST','/api/anime', [
-            'title' => 'My Hero Academia',
-            'genre' => 'shounen',
-            'runtime' => '30min'
-        ]);
+        ])->json('POST','/api/anime', $this->animeData());
         $response->assertStatus(201);
     }
 
@@ -71,11 +67,7 @@ class AnimeRelatedTest extends TestCase
     @test
      */
     public function not_able_to_add_anime(){
-        $response = $this->json('POST','/api/anime', [
-            'title' => 'My Hero Academia',
-            'genre' => 'shounen',
-            'runtime' => '30min'
-        ]);
+        $response = $this->json('POST','/api/anime', $this->animeData());
         $response->assertStatus(401);
     }
 
@@ -116,7 +108,7 @@ class AnimeRelatedTest extends TestCase
         ])->json('PUT', 'api/anime/'.$anime->id, [
             'title' => 'Fire Force XXL',
             'genre' => 'Magic',
-            'runtime' => '45min'
+            'episode' => '45'
         ]);
         $response->assertOk();
     }
@@ -129,11 +121,11 @@ class AnimeRelatedTest extends TestCase
         $anime = Anime::latest()->first();
         $response = $this->withHeaders([
             'Accept' => 'application/json'
-        ])->json('PUT', 'api/anime/'.$anime->id, [
+        ])->json('PUT', 'api/anime/'.$anime->id,  array_merge($this->animeData(), [
             'title' => 'Fire Force',
             'genre' => 'Magic',
-            'runtime' => '45min'
-        ]);
+            'episode' => '45'
+        ]));
         $response->assertStatus(401);
     }
 
@@ -142,15 +134,23 @@ class AnimeRelatedTest extends TestCase
      */
     public function not_able_to_delete_anime(){
 //        $this->withoutExceptionHandling();
-        $this->json('POST','/api/anime', [
-            'title' => 'My Hero Academia',
-            'genre' => 'shounen',
-            'runtime' => '30min'
-        ]);
+        $this->json('POST','/api/anime', $this->animeData());
 
         $anime = Anime::latest()->first();
         $response = $this->json('DELETE', 'api/anime/'.$anime->id);
         $response->assertStatus(401);
+    }
+
+    /**
+     * @return array
+     */
+    protected function animeData(): array
+    {
+        return [
+            'title' => 'My Hero Academia',
+            'genre' => 'shounen',
+            'episode' => '30'
+        ];
     }
 
 }

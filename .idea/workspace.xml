@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8e9b5083-6016-43a5-8892-1b5d08af1ff3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Anime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Anime.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/AnimeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/AnimeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Feature/AnimeRelatedTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/AnimeRelatedTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +21,13 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -185,7 +192,9 @@
       <workItem from="1568686186609" duration="17395000" />
       <workItem from="1568708171925" duration="6515000" />
       <workItem from="1568770323245" duration="612000" />
-      <workItem from="1568790497819" duration="6144000" />
+      <workItem from="1568790497819" duration="6186000" />
+      <workItem from="1568856155177" duration="9559000" />
+      <workItem from="1568879292198" duration="7497000" />
     </task>
     <servers />
   </component>

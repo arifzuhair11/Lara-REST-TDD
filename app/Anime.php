@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Anime extends Model
 {
     protected $guarded = [];
-    protected $fillable = ['title', 'episodes', 'genre'];
+    protected $fillable = ['title', 'episode', 'genre'];
 }

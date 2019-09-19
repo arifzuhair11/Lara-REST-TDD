@@ -8,16 +8,11 @@
                 <div class="card-header">
                 User
                 </div>
-                <div class="card-body" id="auth">
-                    <form method="POST" id="logoutForm" style="display: none">
-                        @csrf
-                    </form>
-                    <button class="btn btn-outline-danger float-right" onclick="logout()">Logout</button>
-                </div>
-            </div>
-            <div class="card  mt-3">
-                <div class="card-header">Other Action</div>
                 <div class="card-body">
+{{--                    <form method="POST" id="logoutForm" style="display: none">--}}
+{{--                        @csrf--}}
+{{--                    </form>--}}
+{{--                    <button class="btn btn-outline-danger float-right" onclick="logout()">Logout</button>--}}
                 </div>
             </div>
         </div>
@@ -37,7 +32,15 @@
 
                         </tbody>
                     </table>
+                    <div>
+                        <ul class="pagination">
+                            <li class="page-item"><a href="#" class="page-link" id="prev">Prev</a></li>
+                            <li class="page-item"><a href="#" class="page-link" id="current"></a></li>
+                            <li class="page-item"><a href="#" class="page-link" id="next">Next</a></li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -65,7 +68,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Num. of Episode</label>
-                        <input type="text" class="form-control" name="episodes" id="episodeValue" value="">
+                        <input type="text" class="form-control" name="episode" id="episodeValue" value="">
                     </div>
             </div>
             <div class="modal-footer">
@@ -78,6 +81,7 @@
 <script src="{{asset('js/app.js')}}"></script>
 <script>
     $(document).ready(function () {
+        let paginate = {};
             setUser();
             animeIndex();
             $('#baseModal').on('hide.bs.modal', function () {
@@ -99,6 +103,8 @@
     }
     function setUser() {
         user = JSON.parse(localStorage.getItem('user'));
+        logoutHTML = "<li class='nav-item dropdown' id='log'><a class='nav-link' role='button' onclick='logout()'>Logout</a></li>";
+        $('#auth').append(logoutHTML);
         $('#navbarDropdown').text(user.name);
     }
     function logout(){
@@ -109,6 +115,7 @@
          if(confirm(message)){
              axios.post('/api/myLogout',logoutForm, headers)
                  .then(response => {
+                     $('#log').remove();
                      window.location = response['data']['redirect'];
                  })
                  .catch(error => {
@@ -131,11 +138,13 @@
                 })
         }
     }
-    function animeIndex() {
+    function animeIndex(page_url) {
         header = setHeaders();
-        axios.get('/api/anime', header)
+        let url = page_url || '/api/anime';
+        $('#animeBody').empty();
+        axios.get(url, header)
             .then(response => {
-            let rowData = response.data.data;
+            let rowData = response.data.data.data;
             rowData.forEach(function (data) {
                 html = "<tr>" +
                     "   <td>"+data['title']+"</td>   " +
@@ -146,6 +155,7 @@
                     "</tr>";
                 $('#animeBody').append(html);
             });
+            this.setPagination(response);
         });
     }
     function deleteAnime(element) {
@@ -173,7 +183,7 @@
                 $('#baseModal').find('.btn').attr('onclick', 'editProcess()');
                 $('#baseModal').find('#titleValue').val(response['data']['anime']['title']);
                 $('#baseModal').find('#genreValue').val(response['data']['anime']['genre']);
-                $('#baseModal').find('#episodeValue').val(response['data']['anime']['runtime']);
+                $('#baseModal').find('#episodeValue').val(response['data']['anime']['episode']);
                 $('#baseModal').find('#animeID').val(response['data']['anime']['id']);
             })
             .catch(error => {
@@ -195,6 +205,26 @@
                     console.log(error);
                 })
         }
+    }
+    function setPagination(response) {
+        let meta = response.data.data;
+        pagination = {
+            'current_page' : meta.current_page,
+            'next_page_url' : meta.next_page_url,
+            'prev_page_url' : meta.prev_page_url,
+            'last_page' : meta.last_page
+        }
+        if(pagination.prev_page_url == null){
+            $('#prev').attr('disabled', true);
+        }else{
+            $('#prev').attr('onclick', 'animeIndex(pagination.prev_page_url)');
+        }
+        if(pagination.next_page_url == null){
+            $('#next').attr('disabled', true);
+        }else{
+            $('#next').attr('onclick', 'animeIndex(pagination.next_page_url)');
+        }
+        $('#current').text(pagination.current_page+' out of '+pagination.last_page);
     }
 
 </script>

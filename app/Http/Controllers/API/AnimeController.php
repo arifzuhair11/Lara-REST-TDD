@@ -15,7 +15,7 @@ class AnimeController extends Controller
      */
     public function index()
     {
-       return response()->json(['data' => Anime::all()], 200);
+       return response()->json(['data' => Anime::latest()->paginate(5)], 200);
     }
 
     /**
@@ -51,11 +51,7 @@ class AnimeController extends Controller
     public function update(Anime $anime, Request $request)
     {
         $oldTitle = $anime->title;
-        $anime->title = $request->title;
-        $anime->episode = $request->episodes;
-        $anime->genre = $request->genre;
-        $anime->save();
-
+        $anime->update($request->all());
         return response()->json(['message' => $oldTitle.' updated successfully!'], 200);
     }
 
